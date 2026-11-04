@@ -13,35 +13,62 @@ export function Hero() {
   const [started, setStarted] = useState(false);
   const userPaused = useRef(false);
 
+  // La fuente se asigna aquí para no descargar el vídeo cuando no se va a reproducir.
+  function loadSource(el: HTMLVideoElement) {
+    if (el.getAttribute("src")) return;
+    // iOS exige que esté silenciado antes de cargar para permitir autoplay.
+    el.muted = true;
+    el.defaultMuted = true;
+    el.setAttribute("muted", "");
+    const landscape = window.matchMedia("(min-aspect-ratio: 1/1)").matches;
+    el.src = landscape ? "/media/hero/hero-desktop.mp4" : "/media/hero/hero-mobile.mp4";
+    el.load();
+  }
+
   useEffect(() => {
     const el = video.current;
     if (!el) return;
+    setAvailable(true);
 
-    // Sin vídeo de fondo si la persona pide menos movimiento o ahorro de datos:
-    // se queda el póster y la interfaz sigue intacta.
+    // Sin autoplay si la persona pide menos movimiento o ahorro de datos:
+    // se queda el póster y puede arrancarlo con el botón.
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
     if (reducedMotion || saveData) return;
 
-    // La fuente se asigna aquí para no descargar el vídeo en esos casos.
-    const landscape = window.matchMedia("(min-aspect-ratio: 1/1)").matches;
-    // iOS exige que esté silenciado antes de cargar para permitir autoplay.
-    el.muted = true;
-    el.setAttribute("muted", "");
-    el.src = landscape ? "/media/hero/hero-desktop.mp4" : "/media/hero/hero-mobile.mp4";
-    el.load();
-    setAvailable(true);
+    loadSource(el);
+    el.autoplay = true;
 
-    const play = () => el.play().catch(() => setPlaying(false));
+    let inView = true;
+    const play = () => {
+      if (!inView || userPaused.current || !el.paused) return;
+      el.play().catch(() => setPlaying(false));
+    };
     play();
+
+    // iOS puede rechazar el primer intento (modo de bajo consumo, navegadores dentro
+    // de otras apps): se reintenta con los datos listos y con el primer gesto.
+    const gestures = ["touchend", "click", "keydown"] as const;
+    for (const type of gestures) window.addEventListener(type, play, { passive: true });
+    el.addEventListener("canplay", play);
+    window.addEventListener("pageshow", play);
+    document.addEventListener("visibilitychange", play);
 
     // Ahorra batería: no reproducir fuera de vista.
     const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) el.pause();
-      else if (!userPaused.current) play();
+      inView = entry.isIntersecting;
+      if (inView) play();
+      else el.pause();
     });
     observer.observe(el);
-    return () => observer.disconnect();
+
+    return () => {
+      observer.disconnect();
+      for (const type of gestures) window.removeEventListener(type, play);
+      el.removeEventListener("canplay", play);
+      window.removeEventListener("pageshow", play);
+      document.removeEventListener("visibilitychange", play);
+    };
   }, []);
 
   function toggle() {
@@ -49,6 +76,7 @@ export function Hero() {
     if (!el) return;
     if (el.paused) {
       userPaused.current = false;
+      loadSource(el);
       el.play().catch(() => setPlaying(false));
     } else {
       userPaused.current = true;
@@ -58,21 +86,11 @@ export function Hero() {
 
   return (
     <section aria-label="Portada" className="relative h-svh min-h-[20rem] w-full overflow-hidden bg-ink">
-      <picture>
-        <source media="(min-aspect-ratio: 1/1)" srcSet="/media/hero/poster-desktop.avif" type="image/avif" />
-        <source media="(min-aspect-ratio: 1/1)" srcSet="/media/hero/poster-desktop.webp" type="image/webp" />
-        <source srcSet="/media/hero/poster-mobile.avif" type="image/avif" />
-        <img
-          src="/media/hero/poster-mobile.webp"
-          alt={POSTER_ALT}
-          fetchPriority="high"
-          decoding="async"
-          className="absolute inset-0 size-full object-cover object-center"
-        />
-      </picture>
 
+      {/* Siempre visible, bajo el póster: iOS no reproduce lo que considera oculto */}
       <video
         ref={video}
+        autoPlay
         muted
         loop
         playsInline
@@ -84,10 +102,23 @@ export function Hero() {
           setStarted(true);
         }}
         onPause={() => setPlaying(false)}
-        className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-700 ${
-          started ? "opacity-100" : "opacity-0"
-        }`}
+        className="absolute inset-0 size-full object-cover object-center"
       />
+
+      <picture>
+        <source media="(min-aspect-ratio: 1/1)" srcSet="/media/hero/poster-desktop.avif" type="image/avif" />
+        <source media="(min-aspect-ratio: 1/1)" srcSet="/media/hero/poster-desktop.webp" type="image/webp" />
+        <source srcSet="/media/hero/poster-mobile.avif" type="image/avif" />
+        <img
+          src="/media/hero/poster-mobile.webp"
+          alt={POSTER_ALT}
+          fetchPriority="high"
+          decoding="async"
+          className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-700 ${
+            started ? "opacity-0" : "opacity-100"
+          }`}
+        />
+      </picture>
 
       {/* Degradados sutiles para la cabecera y el texto */}
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/45 to-transparent" />
