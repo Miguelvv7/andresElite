@@ -23,7 +23,7 @@
       "provider": "local",
       "src": "/media/projects/habanera/film-1080.mp4",
       "aspect": "9:16",
-      "note": "Versión web de demostración · 1080p"
+      "note": "Rodado en 4K · Versión optimizada para web a 1080p"
     },
     "preview": "/media/projects/habanera/preview.mp4",
     "gallery": [
@@ -79,7 +79,7 @@
       "provider": "local",
       "src": "/media/projects/morelove/film-1080.mp4",
       "aspect": "9:16",
-      "note": "Versión web de demostración · 1080p"
+      "note": "Rodado en 4K · Versión optimizada para web a 1080p"
     },
     "preview": "/media/projects/morelove/preview.mp4",
     "gallery": [
@@ -135,7 +135,7 @@
       "provider": "local",
       "src": "/media/projects/sema-con-s-tattoo/film-1080.mp4",
       "aspect": "9:16",
-      "note": "Versión web de demostración · 1080p"
+      "note": "Rodado en 4K · Versión optimizada para web a 1080p"
     },
     "preview": "/media/projects/sema-con-s-tattoo/preview.mp4",
     "gallery": [
@@ -184,7 +184,7 @@
       "provider": "local",
       "src": "/media/projects/en-pista/film-1080.mp4",
       "aspect": "9:16",
-      "note": "Versión web de demostración · 1080p"
+      "note": "Rodado en 4K · Versión optimizada para web a 1080p"
     },
     "preview": "/media/projects/en-pista/preview.mp4",
     "gallery": [
