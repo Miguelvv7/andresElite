@@ -93,7 +93,6 @@ export function ProjectTile({ project }: { project: Project }) {
       )}
 
       {useImage && inView && previewSrc && (
-        // eslint-disable-next-line @next/next/no-img-element
         <img
           src={previewSrc}
           alt=""

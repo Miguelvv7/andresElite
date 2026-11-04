@@ -1,6 +1,5 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
 import { useEffect, useRef, useState } from "react";
 
 const POSTER_ALT = "Andrés Ruiz corriendo en una pista de atletismo";

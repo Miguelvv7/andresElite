@@ -130,7 +130,7 @@ async function extendSky(path) {
 
 const STILLS = [
   [4.9, "01-retrato"], [5.95, "02-cordones"], [7.6, "03-pista"],
-  [10.4, "04-espalda"], [12.6, "05-frontal"], [14.2, "06-lateral"],
+  [12.6, "05-frontal"], [14.2, "06-lateral"],
 ];
 
 // Proyectos de la carpeta `proyectos/`: máster, logo y fotogramas sin subtítulos.
@@ -202,7 +202,6 @@ if (!only || only === "projects") {
   }
 }
 
-const images = {};
 if (!only || only === "images") {
   const tmpA = await heroPoster("poster-mobile", "scale=1080:1920", 1080);
   const tmpB = await heroPoster("poster-desktop", "crop=2160:1215:0:330,scale=1920:1080", 1920);
@@ -232,9 +231,8 @@ if (!only || only === "images") {
   // Fotografías: máximo 1800 px de ancho; next/image sirve AVIF/WebP por tamaño.
   for (const [file, name] of PHOTOS) {
     const target = out("photos", `${name}.jpg`);
-    const info = await sharp(join(source, file)).rotate().resize({ width: 1800, withoutEnlargement: true })
+    await sharp(join(source, file)).rotate().resize({ width: 1800, withoutEnlargement: true })
       .flatten({ background: "#050505" }).jpeg({ quality: 84, mozjpeg: true }).toFile(target);
-    images[name] = { src: `/media/photos/${name}.jpg`, width: info.width, height: info.height };
     record(file, target, "Fotografía");
   }
 
@@ -243,10 +241,9 @@ if (!only || only === "images") {
   {
     const file = "Retrato deportivo con gafas doradas.png";
     const target = out("photos", "sobre-mi.jpg");
-    const info = await sharp(await extendSky(join(source, file)).then(({ data, width, height }) =>
+    await sharp(await extendSky(join(source, file)).then(({ data, width, height }) =>
       sharp(data, { raw: { width, height, channels: 3 } }).png().toBuffer()))
       .jpeg({ quality: 92, mozjpeg: true, chromaSubsampling: "4:4:4" }).toFile(target);
-    images["sobre-mi"] = { src: "/media/photos/sobre-mi.jpg", width: info.width, height: info.height };
     record(file, target, "Retrato de Sobre mí, con el cielo ampliado");
   }
 
@@ -261,7 +258,6 @@ if (!only || only === "images") {
   }
   execFileSync("rm", [tmpA, tmpB]);
 
-  console.log(images);
 }
 
 // Solo una pasada completa conoce todos los archivos.

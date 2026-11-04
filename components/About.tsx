@@ -17,7 +17,7 @@ export function About({ headingLevel = 2 }: { headingLevel?: 1 | 2 }) {
       // Tono tomado del cielo de la fotografía; la sección queda bajo la cabecera al llegar.
       className="on-light relative isolate flex -scroll-mt-20 flex-col overflow-hidden bg-[#e1e1e4] text-ink xl:grid xl:min-h-svh xl:grid-cols-12 xl:grid-rows-[1fr_auto]"
     >
-      <div className="gutter order-1 pt-28 xl:col-span-5 xl:pt-[max(8.5rem,17svh)] xl:pr-0">
+      <div className="gutter order-1 pt-28 xl:col-span-5 xl:pt-[max(8.5rem,17svh)]">
         <Reveal>
           <p className="border-l border-ink/50 pl-4 text-xs font-medium tracking-[0.28em] uppercase">Sobre mí</p>
           <Heading className="mt-6 text-[clamp(3.25rem,15.5vw,6.5rem)] leading-[0.95] font-semibold tracking-[-0.035em] xl:text-[clamp(3.25rem,5.6vw,6.5rem)]">

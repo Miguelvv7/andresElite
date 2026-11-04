@@ -268,11 +268,6 @@
     },
     {
       "original": "IMG_9525.MOV",
-      "output": "public/media/projects/en-pista/04-espalda.jpg",
-      "use": "Fotograma de la pieza"
-    },
-    {
-      "original": "IMG_9525.MOV",
       "output": "public/media/projects/en-pista/05-frontal.jpg",
       "use": "Fotograma de la pieza"
     },
