@@ -1,0 +1,265 @@
+{
+  "note": "Generado por scripts/process-media.mjs. Relación original → versión web.",
+  "files": [
+    {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/hero/hero-mobile.mp4",
+      "use": "Vídeo de portada (portrait)"
+    },
+    {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/hero/hero-desktop.mp4",
+      "use": "Vídeo de portada (landscape)"
+    },
+    {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/projects/en-pista/film-1080.mp4",
+      "use": "Pieza completa 1080p (demostración local)"
+    },
+    {
+      "original": "proyectos/habanera/IMG_8329.MOV",
+      "output": "public/media/projects/habanera/film-1080.mp4",
+      "use": "Pieza completa 1080p (demostración local)"
+    },
+    {
+      "original": "proyectos/habanera/IMG_8329.MOV",
+      "output": "public/media/projects/habanera/poster.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/habanera/IMG_8329.MOV",
+      "output": "public/media/projects/habanera/01.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/habanera/IMG_8329.MOV",
+      "output": "public/media/projects/habanera/02.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/habanera/IMG_8329.MOV",
+      "output": "public/media/projects/habanera/03.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/habanera/IMG_8329.MOV",
+      "output": "public/media/projects/habanera/04.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/habanera/IMG_9530.JPG",
+      "output": "public/media/projects/habanera/logo.jpg",
+      "use": "Logo del cliente"
+    },
+    {
+      "original": "proyectos/marcaropa/IMG_9402.MOV",
+      "output": "public/media/projects/morelove/film-1080.mp4",
+      "use": "Pieza completa 1080p (demostración local)"
+    },
+    {
+      "original": "proyectos/marcaropa/IMG_9402.MOV",
+      "output": "public/media/projects/morelove/poster.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/marcaropa/IMG_9402.MOV",
+      "output": "public/media/projects/morelove/01.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/marcaropa/IMG_9402.MOV",
+      "output": "public/media/projects/morelove/02.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/marcaropa/IMG_9402.MOV",
+      "output": "public/media/projects/morelove/03.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/marcaropa/IMG_9402.MOV",
+      "output": "public/media/projects/morelove/04.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/marcaropa/IMG_9528.JPG",
+      "output": "public/media/projects/morelove/logo.jpg",
+      "use": "Logo del cliente"
+    },
+    {
+      "original": "proyectos/tatuador/IMG_8303.MOV",
+      "output": "public/media/projects/sema-con-s-tattoo/film-1080.mp4",
+      "use": "Pieza completa 1080p (demostración local)"
+    },
+    {
+      "original": "proyectos/tatuador/IMG_8303.MOV",
+      "output": "public/media/projects/sema-con-s-tattoo/poster.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/tatuador/IMG_8303.MOV",
+      "output": "public/media/projects/sema-con-s-tattoo/01.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/tatuador/IMG_8303.MOV",
+      "output": "public/media/projects/sema-con-s-tattoo/02.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/tatuador/IMG_8303.MOV",
+      "output": "public/media/projects/sema-con-s-tattoo/03.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/tatuador/IMG_8303.MOV",
+      "output": "public/media/projects/sema-con-s-tattoo/04.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/tatuador/IMG_9529.JPG",
+      "output": "public/media/projects/sema-con-s-tattoo/logo.jpg",
+      "use": "Logo del cliente"
+    },
+    {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/hero/poster-mobile.avif",
+      "use": "Poster de portada (1080px)"
+    },
+    {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/hero/poster-desktop.avif",
+      "use": "Poster de portada (1920px)"
+    },
+    {
+      "original": "IMG_7647.PNG",
+      "output": "public/media/brand/logo-full.webp",
+      "use": "Logo oficial metálico (preloader)"
+    },
+    {
+      "original": "IMG_7653.PNG",
+      "output": "public/media/brand/logo-mark.png",
+      "use": "Monograma oficial blanco (cabecera)"
+    },
+    {
+      "original": "IMG_7653.PNG",
+      "output": "app/icon.png",
+      "use": "Icono"
+    },
+    {
+      "original": "IMG_7653.PNG",
+      "output": "app/apple-icon.png",
+      "use": "Icono"
+    },
+    {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/brand/og.jpg",
+      "use": "Imagen Open Graph"
+    },
+    {
+      "original": "IMG_7079.JPG",
+      "output": "public/media/photos/londres-06.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "IMG_6941.JPG",
+      "output": "public/media/photos/londres-01.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "IMG_7078.JPG",
+      "output": "public/media/photos/londres-02.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "IMG_7084.JPG",
+      "output": "public/media/photos/londres-03.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "IMG_6942.JPG",
+      "output": "public/media/photos/londres-04.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "IMG_7082.JPG",
+      "output": "public/media/photos/londres-05.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "DSC01500.JPG",
+      "output": "public/media/photos/morelove-01.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "DSC01531.JPG",
+      "output": "public/media/photos/morelove-02.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "DSC01114.JPG",
+      "output": "public/media/photos/morelove-03.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "DSC01412.JPG",
+      "output": "public/media/photos/morelove-04.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "DSC01465.JPG",
+      "output": "public/media/photos/morelove-05.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "DSC01341.JPG",
+      "output": "public/media/photos/morelove-06.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "DSC01439.JPG",
+      "output": "public/media/photos/morelove-07.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "DSC01451.JPG",
+      "output": "public/media/photos/morelove-08.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "Retrato deportivo con gafas doradas.png",
+      "output": "public/media/photos/sobre-mi.jpg",
+      "use": "Retrato de Sobre mí, con el cielo ampliado"
+    },
+    {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/projects/en-pista/01-retrato.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/projects/en-pista/02-cordones.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/projects/en-pista/03-pista.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/projects/en-pista/04-espalda.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/projects/en-pista/05-frontal.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/projects/en-pista/06-lateral.jpg",
+      "use": "Fotograma de la pieza"
+    }
+  ]
+}

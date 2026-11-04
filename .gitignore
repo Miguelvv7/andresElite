@@ -1,0 +1,22 @@
+node_modules
+.next
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+.env
+.env.local
+.env*.local
+.vercel
+
+# Másteres originales: no se publican ni se suben al repositorio
+/fotos:video/
+/fotos/
+/proyectos/
+*.MOV
+*.mov
+
+# Imágenes subidas desde el panel en local
+/public/media/uploads/
+
+# Herramientas locales del editor
+/.claude/

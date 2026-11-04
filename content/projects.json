@@ -1,0 +1,215 @@
+[
+  {
+    "id": "habanera",
+    "slug": "habanera",
+    "title": "Habanera",
+    "category": "Hostelería",
+    "year": 2026,
+    "client": "Habanera",
+    "logo": {
+      "src": "/media/projects/habanera/logo.jpg",
+      "width": 320,
+      "height": 320,
+      "alt": "Logo de Habanera"
+    },
+    "description": "Pieza para Habanera, en Écija. Un lugar para vivir el momento, porque lo importante no es solo lo que tomas, es con quién lo disfrutas.",
+    "poster": {
+      "src": "/media/projects/habanera/poster.jpg",
+      "width": 1440,
+      "height": 2560,
+      "alt": "Una mano acerca a cámara un cóctel anaranjado en Habanera"
+    },
+    "video": {
+      "provider": "local",
+      "src": "/media/projects/habanera/film-1080.mp4",
+      "aspect": "9:16",
+      "note": "Versión web de demostración · 1080p"
+    },
+    "gallery": [
+      {
+        "src": "/media/projects/habanera/01.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Café cayendo en una taza blanca bajo la cafetera"
+      },
+      {
+        "src": "/media/projects/habanera/02.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Un camarero agita una coctelera en la barra"
+      },
+      {
+        "src": "/media/projects/habanera/03.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Camarero de espaldas con una bandeja de bebidas en la terraza"
+      },
+      {
+        "src": "/media/projects/habanera/04.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Mesa junto a la entrada del local, tras las hojas de una planta"
+      }
+    ],
+    "published": true,
+    "order": 1
+  },
+  {
+    "id": "morelove",
+    "slug": "morelove",
+    "title": "MoreLove",
+    "category": "Moda",
+    "year": 2026,
+    "client": "MoreLove",
+    "logo": {
+      "src": "/media/projects/morelove/logo.jpg",
+      "width": 320,
+      "height": 320,
+      "alt": "Logo de MoreLove: un corazón rosa atravesado por una flecha"
+    },
+    "description": "La historia de MoreLove contada por quien la crea: del primer boceto sobre el papel a las prendas ya terminadas.",
+    "poster": {
+      "src": "/media/projects/morelove/poster.jpg",
+      "width": 1440,
+      "height": 2560,
+      "alt": "Un joven de espaldas, con una camiseta blanca de MoreLove, frente al mar al atardecer"
+    },
+    "video": {
+      "provider": "local",
+      "src": "/media/projects/morelove/film-1080.mp4",
+      "aspect": "9:16",
+      "note": "Versión web de demostración · 1080p"
+    },
+    "gallery": [
+      {
+        "src": "/media/projects/morelove/01.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "El creador sentado en su escritorio, con el suelo cubierto de prendas embolsadas"
+      },
+      {
+        "src": "/media/projects/morelove/02.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Silueta frente a una puesta de sol sobre el mar"
+      },
+      {
+        "src": "/media/projects/morelove/03.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Silueta de perfil con el sol poniéndose en el horizonte"
+      },
+      {
+        "src": "/media/projects/morelove/04.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "De espaldas frente al mar, con la camiseta de MoreLove"
+      }
+    ],
+    "published": true,
+    "order": 2
+  },
+  {
+    "id": "sema-con-s-tattoo",
+    "slug": "sema-con-s-tattoo",
+    "title": "Sema con S Tattoo",
+    "category": "Tatuaje",
+    "year": 2026,
+    "client": "Sema con S Tattoo",
+    "logo": {
+      "src": "/media/projects/sema-con-s-tattoo/logo.jpg",
+      "width": 320,
+      "height": 320,
+      "alt": "Logo de Sema con S Tattoo"
+    },
+    "description": "Dentro del estudio de Sema con S Tattoo: del diseño en la tableta a la aguja sobre la piel, con el tatuador delante de la cámara.",
+    "poster": {
+      "src": "/media/projects/sema-con-s-tattoo/poster.jpg",
+      "width": 1440,
+      "height": 2560,
+      "alt": "Un águila tatuada en un antebrazo durante la sesión"
+    },
+    "video": {
+      "provider": "local",
+      "src": "/media/projects/sema-con-s-tattoo/film-1080.mp4",
+      "aspect": "9:16",
+      "note": "Versión web de demostración · 1080p"
+    },
+    "gallery": [
+      {
+        "src": "/media/projects/sema-con-s-tattoo/01.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "El tatuador trabajando sobre un brazo en el estudio"
+      },
+      {
+        "src": "/media/projects/sema-con-s-tattoo/02.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Tableta con el diseño de un águila junto a la mesa de trabajo"
+      },
+      {
+        "src": "/media/projects/sema-con-s-tattoo/03.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Estanterías llenas de cubos de Rubik de colores en el estudio"
+      },
+      {
+        "src": "/media/projects/sema-con-s-tattoo/04.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Brazo con el tatuaje terminado"
+      }
+    ],
+    "published": true,
+    "order": 3
+  },
+  {
+    "id": "en-pista",
+    "slug": "en-pista",
+    "title": "En pista",
+    "category": "Deporte / Fitness",
+    "year": 2026,
+    "description": "Pieza vertical rodada en una pista de atletismo: preparación, salida y carrera.",
+    "poster": {
+      "src": "/media/projects/en-pista/06-lateral.jpg",
+      "width": 1440,
+      "height": 2560,
+      "alt": "Andrés Ruiz corriendo de perfil en una pista de atletismo"
+    },
+    "video": {
+      "provider": "local",
+      "src": "/media/projects/en-pista/film-1080.mp4",
+      "aspect": "9:16",
+      "note": "Versión web de demostración · 1080p"
+    },
+    "gallery": [
+      {
+        "src": "/media/projects/en-pista/01-retrato.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Retrato de Andrés Ruiz en la pista antes de correr"
+      },
+      {
+        "src": "/media/projects/en-pista/02-cordones.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Plano de manos atando los cordones de una zapatilla"
+      },
+      {
+        "src": "/media/projects/en-pista/03-pista.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Plano general de un corredor en la pista bajo un cielo con nubes"
+      },
+      {
+        "src": "/media/projects/en-pista/05-frontal.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Andrés Ruiz corriendo de frente hacia la cámara"
+      }
+    ],
+    "published": true,
+    "order": 4
+  }
+]
