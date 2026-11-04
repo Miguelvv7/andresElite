@@ -140,6 +140,18 @@ const PROJECTS = [
   { slug: "sema-con-s-tattoo", dir: "tatuador", video: "IMG_8303.MOV", logo: "IMG_9529.JPG", stills: [[43.5, "poster"], [22, "01"], [25, "02"], [46, "03"], [50, "04"]] },
 ];
 
+// Vídeo de las tarjetas: la pieza entera, sin sonido y ligera, porque se reproducen varias a la vez.
+function tilePreview(master, origin, slug) {
+  const target = out("projects", slug, "preview.mp4");
+  ffmpeg(
+    "-i", master, "-vf", "scale=540:960,format=yuv420p", "-an",
+    "-c:v", "libx264", "-profile:v", "main", "-preset", "slow", "-crf", "27", "-maxrate", "1000k", "-bufsize", "2M",
+    "-movflags", "+faststart", target,
+  );
+  record(origin, target, "Vídeo de la tarjeta");
+  console.log(slug, "preview", (statSync(target).size / 1e6).toFixed(1) + " MB");
+}
+
 const only = process.argv[2];
 
 if (!only || only === "video") {
@@ -155,6 +167,7 @@ if (!only || only === "video") {
     "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", film,
   );
   record(FILM, film, "Pieza completa 1080p (demostración local)");
+  tilePreview(filmPath, FILM, "en-pista");
 }
 
 if (!only || only === "projects") {
@@ -170,6 +183,7 @@ if (!only || only === "projects") {
       "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", film,
     );
     record(origin, film, "Pieza completa 1080p (demostración local)");
+    tilePreview(master, origin, project.slug);
     console.log(project.slug, (statSync(film).size / 1e6).toFixed(1) + " MB");
 
     for (const [time, name] of project.stills) {

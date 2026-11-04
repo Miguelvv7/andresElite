@@ -5,70 +5,77 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { Project } from "@/lib/types";
 
-// Solo una tarjeta en reproducción: ratón y teclado podrían activar dos a la vez.
-let activeVideo: HTMLVideoElement | null = null;
-const HOVER_DELAY_MS = 120;
-
 export function ProjectTile({ project }: { project: Project }) {
+  const frame = useRef<HTMLAnchorElement>(null);
   const video = useRef<HTMLVideoElement>(null);
-  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
-  const [playing, setPlaying] = useState(false);
+  const [started, setStarted] = useState(false);
+  // Plan B si el sistema bloquea el vídeo: Safari reproduce un MP4 dentro de una imagen.
+  const [useImage, setUseImage] = useState(false);
+  const [inView, setInView] = useState(false);
 
-  // Las piezas en Mux muestran solo el póster: su HLS no se carga para una vista previa.
-  const previewSrc = project.video.provider === "local" ? project.video.src : undefined;
+  const previewSrc = project.preview ?? (project.video.provider === "local" ? project.video.src : undefined);
 
-  function start() {
+  useEffect(() => {
     const el = video.current;
-    if (!el || !previewSrc) return;
+    const link = frame.current;
+    if (!el || !link || !previewSrc) return;
+
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
     if (saveData || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    // Pequeña espera: cruzar la cuadrícula con el ratón no debe descargar cada vídeo.
-    timer.current = setTimeout(() => {
-      if (activeVideo && activeVideo !== el) activeVideo.pause();
-      activeVideo = el;
-      if (!el.getAttribute("src")) el.src = previewSrc;
-      el.play().catch(() => setPlaying(false));
-    }, HOVER_DELAY_MS);
-  }
+    let visible = false;
+    let blocked = false;
+    let watchdog: ReturnType<typeof setTimeout> | undefined;
 
-  function stop() {
-    clearTimeout(timer.current);
-    const el = video.current;
-    if (!el) return;
-    el.pause();
-    if (el.getAttribute("src")) el.currentTime = 0;
-    if (activeVideo === el) activeVideo = null;
-  }
+    const toImage = () => {
+      if (!visible || !el.paused) return;
+      blocked = true;
+      setUseImage(true);
+    };
+    const play = () => {
+      if (!visible || blocked || !el.paused) return;
+      el.preload = "auto";
+      el.play().catch((error: DOMException) => {
+        if (error.name === "NotAllowedError") toImage();
+      });
+    };
 
-  useEffect(() => () => clearTimeout(timer.current), []);
+    // Solo descarga y reproduce mientras la tarjeta está en pantalla.
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        setInView(visible);
+        clearTimeout(watchdog);
+        if (visible) {
+          play();
+          // Por si el rechazo no llega como error: parado a los 3 s, está bloqueado.
+          if (!blocked) watchdog = setTimeout(toImage, 3000);
+        } else {
+          el.pause();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    observer.observe(link);
+
+    document.addEventListener("visibilitychange", play);
+    window.addEventListener("pageshow", play);
+    return () => {
+      clearTimeout(watchdog);
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", play);
+      window.removeEventListener("pageshow", play);
+    };
+  }, [previewSrc]);
 
   return (
     <Link
+      ref={frame}
       href={`/filmmaking/${project.slug}`}
-      onPointerEnter={(event) => {
-        if (event.pointerType === "mouse") start();
-      }}
-      onPointerLeave={(event) => {
-        if (event.pointerType === "mouse") stop();
-      }}
-      onFocus={(event) => {
-        if (event.currentTarget.matches(":focus-visible")) start();
-      }}
-      onBlur={stop}
       className="group relative block aspect-[9/16] overflow-hidden rounded-md bg-black"
     >
-      {project.poster && (
-        <Image
-          src={project.poster.src}
-          alt={project.poster.alt}
-          fill
-          sizes="(min-width: 768px) 25vw, 50vw"
-          className="object-contain"
-        />
-      )}
-
       {previewSrc && (
+        // Siempre visible bajo el póster, porque iOS no reproduce lo que considera oculto.
         // object-contain: la pieza se ve entera, nunca recortada.
         <video
           ref={video}
@@ -78,11 +85,32 @@ export function ProjectTile({ project }: { project: Project }) {
           preload="none"
           aria-hidden="true"
           tabIndex={-1}
-          onPlaying={() => setPlaying(true)}
-          onPause={() => setPlaying(false)}
-          className={`absolute inset-0 size-full object-contain transition-opacity duration-300 ${
-            playing ? "opacity-100" : "opacity-0"
-          }`}
+          onPlaying={() => setStarted(true)}
+          className="absolute inset-0 size-full object-contain"
+        >
+          <source src={previewSrc} type="video/mp4" />
+        </video>
+      )}
+
+      {useImage && inView && previewSrc && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={previewSrc}
+          alt=""
+          aria-hidden="true"
+          onLoad={() => setStarted(true)}
+          onError={() => setUseImage(false)}
+          className="absolute inset-0 size-full object-contain"
+        />
+      )}
+
+      {project.poster && (
+        <Image
+          src={project.poster.src}
+          alt={project.poster.alt}
+          fill
+          sizes="(min-width: 768px) 25vw, 50vw"
+          className={`object-contain transition-opacity duration-500 ${started ? "opacity-0" : "opacity-100"}`}
         />
       )}
 

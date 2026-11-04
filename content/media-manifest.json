@@ -17,9 +17,19 @@
       "use": "Pieza completa 1080p (demostración local)"
     },
     {
+      "original": "IMG_9525.MOV",
+      "output": "public/media/projects/en-pista/preview.mp4",
+      "use": "Vídeo de la tarjeta"
+    },
+    {
       "original": "proyectos/habanera/IMG_8329.MOV",
       "output": "public/media/projects/habanera/film-1080.mp4",
       "use": "Pieza completa 1080p (demostración local)"
+    },
+    {
+      "original": "proyectos/habanera/IMG_8329.MOV",
+      "output": "public/media/projects/habanera/preview.mp4",
+      "use": "Vídeo de la tarjeta"
     },
     {
       "original": "proyectos/habanera/IMG_8329.MOV",
@@ -58,6 +68,11 @@
     },
     {
       "original": "proyectos/marcaropa/IMG_9402.MOV",
+      "output": "public/media/projects/morelove/preview.mp4",
+      "use": "Vídeo de la tarjeta"
+    },
+    {
+      "original": "proyectos/marcaropa/IMG_9402.MOV",
       "output": "public/media/projects/morelove/poster.jpg",
       "use": "Fotograma de la pieza"
     },
@@ -90,6 +105,11 @@
       "original": "proyectos/tatuador/IMG_8303.MOV",
       "output": "public/media/projects/sema-con-s-tattoo/film-1080.mp4",
       "use": "Pieza completa 1080p (demostración local)"
+    },
+    {
+      "original": "proyectos/tatuador/IMG_8303.MOV",
+      "output": "public/media/projects/sema-con-s-tattoo/preview.mp4",
+      "use": "Vídeo de la tarjeta"
     },
     {
       "original": "proyectos/tatuador/IMG_8303.MOV",

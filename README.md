@@ -36,7 +36,7 @@ Finder muestra la carpeta como `fotos/video`; en terminal se llama `fotos:video`
 - **Fotos de Shooting:** añade el archivo a la lista `PHOTOS` del script, ejecútalo y crea su entrada en `content/shooting.json` con dimensiones y texto alternativo.
 - **Cambiar el vídeo de portada:** edita `FILM` en el script. La exposición se ajusta en `GRADE`, y el encuadre por plano para pantallas horizontales en `SHOTS`.
 - **Proyectos:** desde el panel; o, sin él, en `content/projects.json`.
-- **Carpeta `proyectos/`:** cada subcarpeta guarda el máster y el logo de un cliente, fuera de git. Para añadir una, créala con esos dos archivos, añádela a `PROJECTS` en el script con los segundos de sus fotogramas (sin subtítulos), ejecuta `npm run media projects` y crea su entrada en `content/projects.json`.
+- **Carpeta `proyectos/`:** cada subcarpeta guarda el máster y el logo de un cliente, fuera de git. Para añadir una, créala con esos dos archivos, añádela a `PROJECTS` en el script con los segundos de sus fotogramas (sin subtítulos), ejecuta `npm run media projects` (genera también `preview.mp4`, el vídeo que se reproduce solo en la tarjeta) y crea su entrada en `content/projects.json`.
 - **Si reemplazas una imagen conservando el nombre:** borra `.next/cache/images` para que el optimizador no sirva la anterior.
 
 Cada proyecto sigue el esquema de `lib/types.ts`: `id`, `slug`, `title`, `category`, `year`, `client?`, `role?`, `description`, `poster`, `video`, `gallery`, `credits?`, `published`, `order`.

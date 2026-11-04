@@ -37,6 +37,8 @@ export type Project = {
   description: string;
   poster: ImageAsset | null;
   video: ProjectVideo;
+  /** Vídeo ligero y sin sonido para la tarjeta. Es independiente del streaming. */
+  preview?: string;
   gallery: ImageAsset[];
   credits?: Credit[];
   published: boolean;

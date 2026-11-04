@@ -68,8 +68,8 @@ export function About({ headingLevel = 2 }: { headingLevel?: 1 | 2 }) {
       </div>
 
       <div className="gutter order-3 mt-10 pb-8 xl:col-span-12 xl:mt-0 xl:pb-6">
-        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 rounded-3xl border border-white/70 bg-white/35 px-6 py-4 text-sm backdrop-blur-md xl:rounded-full">
-          <ul className="flex flex-wrap items-center gap-x-4 gap-y-1 xl:gap-x-0">
+        <div className="flex flex-col items-center gap-2 rounded-3xl border border-white/70 bg-white/35 px-4 py-4 text-[clamp(0.7rem,3.2vw,0.875rem)] backdrop-blur-md xl:flex-row xl:justify-between xl:rounded-full xl:px-6">
+          <ul className="flex flex-wrap items-center justify-center gap-x-[2.2vw] gap-y-1 md:gap-x-4 xl:gap-x-0">
             {about.tags.map((tag, index) => (
               <li key={tag} className="flex items-center">
                 {index > 0 && <span aria-hidden="true" className="mx-2.5 hidden text-ink/40 xl:inline">/</span>}
