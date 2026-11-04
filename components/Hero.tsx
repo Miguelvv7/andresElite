@@ -5,49 +5,50 @@ import { useEffect, useRef, useState } from "react";
 
 const POSTER_ALT = "Andrés Ruiz corriendo en una pista de atletismo";
 
+const SOURCES = { landscape: "/media/hero/hero-desktop.mp4", portrait: "/media/hero/hero-mobile.mp4" };
+
+// Se ejecuta nada más leer el vídeo: sin autoplay si se pide menos movimiento o ahorro de datos.
+const respectPreferences = `(function(){var v=document.currentScript.previousElementSibling;if(matchMedia('(prefers-reduced-motion: reduce)').matches||(navigator.connection&&navigator.connection.saveData)){v.removeAttribute('autoplay');v.autoplay=false;v.preload='none';v.pause();}})();`;
+
 export function Hero() {
   const video = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [available, setAvailable] = useState(false);
   // Una vez arranca, el vídeo sigue visible aunque se pause, en el fotograma actual.
   const [started, setStarted] = useState(false);
+  // Plan B si el sistema bloquea el vídeo: Safari reproduce un MP4 dentro de una imagen.
+  const [imageFallback, setImageFallback] = useState<string | null>(null);
+  const usingImage = useRef(false);
   const userPaused = useRef(false);
-
-  // La fuente se asigna aquí para no descargar el vídeo cuando no se va a reproducir.
-  function loadSource(el: HTMLVideoElement) {
-    if (el.getAttribute("src")) return;
-    // iOS exige que esté silenciado antes de cargar para permitir autoplay.
-    el.muted = true;
-    el.defaultMuted = true;
-    el.setAttribute("muted", "");
-    const landscape = window.matchMedia("(min-aspect-ratio: 1/1)").matches;
-    el.src = landscape ? "/media/hero/hero-desktop.mp4" : "/media/hero/hero-mobile.mp4";
-    el.load();
-  }
 
   useEffect(() => {
     const el = video.current;
     if (!el) return;
     setAvailable(true);
 
-    // Sin autoplay si la persona pide menos movimiento o ahorro de datos:
-    // se queda el póster y puede arrancarlo con el botón.
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
     if (reducedMotion || saveData) return;
 
-    loadSource(el);
-    el.autoplay = true;
-
     let inView = true;
+    const useImage = () => {
+      if (usingImage.current || userPaused.current || !el.paused) return;
+      usingImage.current = true;
+      const landscape = window.matchMedia("(min-aspect-ratio: 1/1)").matches;
+      setImageFallback(landscape ? SOURCES.landscape : SOURCES.portrait);
+    };
     const play = () => {
-      if (!inView || userPaused.current || !el.paused) return;
-      el.play().catch(() => setPlaying(false));
+      if (usingImage.current || !inView || userPaused.current || !el.paused) return;
+      el.play().catch((error: DOMException) => {
+        setPlaying(false);
+        if (error.name === "NotAllowedError") useImage();
+      });
     };
     play();
 
-    // iOS puede rechazar el primer intento (modo de bajo consumo, navegadores dentro
-    // de otras apps): se reintenta con los datos listos y con el primer gesto.
+    // Por si el rechazo no llega como error: un vídeo aún parado a los 3 s está bloqueado.
+    const watchdog = setTimeout(useImage, 3000);
+
     const gestures = ["touchend", "click", "keydown"] as const;
     for (const type of gestures) window.addEventListener(type, play, { passive: true });
     el.addEventListener("canplay", play);
@@ -63,6 +64,7 @@ export function Hero() {
     observer.observe(el);
 
     return () => {
+      clearTimeout(watchdog);
       observer.disconnect();
       for (const type of gestures) window.removeEventListener(type, play);
       el.removeEventListener("canplay", play);
@@ -74,9 +76,17 @@ export function Hero() {
   function toggle() {
     const el = video.current;
     if (!el) return;
+    if (usingImage.current) {
+      // La imagen no se puede pausar: se retira y el toque ya permite usar el vídeo.
+      usingImage.current = false;
+      setImageFallback(null);
+      userPaused.current = true;
+      setStarted(false);
+      return;
+    }
     if (el.paused) {
       userPaused.current = false;
-      loadSource(el);
+      el.preload = "auto";
       el.play().catch(() => setPlaying(false));
     } else {
       userPaused.current = true;
@@ -84,10 +94,11 @@ export function Hero() {
     }
   }
 
+  const moving = playing || imageFallback !== null;
+
   return (
     <section aria-label="Portada" className="relative h-svh min-h-[20rem] w-full overflow-hidden bg-ink">
-
-      {/* Siempre visible, bajo el póster: iOS no reproduce lo que considera oculto */}
+      {/* En el HTML desde el principio y siempre visible bajo el póster: es lo más fiable en iOS */}
       <video
         ref={video}
         autoPlay
@@ -103,7 +114,25 @@ export function Hero() {
         }}
         onPause={() => setPlaying(false)}
         className="absolute inset-0 size-full object-cover object-center"
-      />
+      >
+        <source media="(min-aspect-ratio: 1/1)" src={SOURCES.landscape} type="video/mp4" />
+        <source src={SOURCES.portrait} type="video/mp4" />
+      </video>
+      <script dangerouslySetInnerHTML={{ __html: respectPreferences }} />
+
+      {imageFallback && (
+        <img
+          src={imageFallback}
+          alt=""
+          aria-hidden="true"
+          onLoad={() => setStarted(true)}
+          onError={() => {
+            usingImage.current = false;
+            setImageFallback(null);
+          }}
+          className="absolute inset-0 size-full object-cover object-center"
+        />
+      )}
 
       <picture>
         <source media="(min-aspect-ratio: 1/1)" srcSet="/media/hero/poster-desktop.avif" type="image/avif" />
@@ -154,10 +183,10 @@ export function Hero() {
         <button
           type="button"
           onClick={toggle}
-          aria-label={playing ? "Pausar vídeo de portada" : "Reproducir vídeo de portada"}
+          aria-label={moving ? "Pausar vídeo de portada" : "Reproducir vídeo de portada"}
           className="absolute right-[max(0.5rem,env(safe-area-inset-right))] bottom-[max(1.5rem,env(safe-area-inset-bottom))] grid size-11 place-items-center text-white/70 transition-colors hover:text-gold md:right-7"
         >
-          {playing ? (
+          {moving ? (
             <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
               <path d="M2 1h3v12H2zM9 1h3v12H9z" />
             </svg>
