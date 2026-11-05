@@ -16,9 +16,9 @@ Producción: `npm run build && npm start`. Comprobación de tipos: `npm run lint
 
 | Ruta | Contenido |
 | --- | --- |
-| `app/(site)` | Inicio, `/sobre-mi`, `/filmmaking`, `/filmmaking/[slug]`, `/shooting`, `/tarifas`, `/contacto` y legales |
+| `app/(site)` | Inicio, `/sobre-mi`, `/filmmaking`, `/filmmaking/[slug]`, `/shooting`, `/tarifas` y legales |
 | `app/admin` | Panel privado |
-| `app/api` | Formulario de contacto, subida de imágenes y Mux |
+| `app/api` | Subida de imágenes y Mux |
 | `components` | Interfaz |
 | `content/projects.json` | Catálogo inicial de proyectos |
 | `content/shooting.json` | Galería de Shooting |
@@ -48,7 +48,6 @@ Todas están en `.env.example`. Si falta alguna, ese servicio queda desactivado 
 | Servicio | Variables | Sin configurar |
 | --- | --- | --- |
 | SEO | `NEXT_PUBLIC_SITE_URL` | Los enlaces absolutos apuntan a localhost |
-| Formulario (Resend) | `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL` | Avisa de que el mensaje no se ha enviado y lo conserva |
 | Panel | `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET` (mínimo 32 caracteres) | `/admin` desactivado |
 | Almacenamiento (Vercel Blob) | `BLOB_READ_WRITE_TOKEN` | En producción no se puede guardar; en local escribe en disco |
 | Streaming (Mux) | `MUX_TOKEN_ID`, `MUX_TOKEN_SECRET` | Subida de vídeo desactivada |
@@ -78,7 +77,8 @@ Los límites antiabuso (formulario y login) son en memoria por instancia: frenan
 
 ## Antes de publicar
 
-- Rellena los campos `[PENDIENTE]` de `app/(site)/legal/[doc]/page.tsx`.
+- Añade el NIF y el domicilio del titular en `app/(site)/legal/[doc]/page.tsx`.
+- Las fotos de Tarifas (fondo en blanco y negro, personas en color) se generan con `npm run media:tarifas`; requiere macOS.
 - **Tarifas:** los precios y lo que incluye cada paquete son inventados; sustitúyelos en `content/pricing.json` por los reales.
 - Confirma los datos de `content/projects.json`: títulos, categorías, años y descripciones son provisionales; falta el rol de Andrés en cada pieza.
 - Mide Core Web Vitals en el dominio real: LCP ≤ 2,5 s, INP ≤ 200 ms y CLS ≤ 0,1 son objetivos, no resultados medidos.

@@ -215,5 +215,117 @@
     ],
     "published": true,
     "order": 4
+  },
+  {
+    "id": "raices-del-sur",
+    "slug": "raices-del-sur",
+    "title": "Raíces del Sur",
+    "category": "Alimentación",
+    "year": 2026,
+    "client": "Raíces del Sur",
+    "logo": {
+      "src": "/media/projects/raices-del-sur/logo.jpg",
+      "width": 320,
+      "height": 320,
+      "alt": "Logo de Raíces del Sur"
+    },
+    "description": "Todo proyecto tiene un día en el que se convierte en realidad. Raíces del Sur, en Alcalá la Real (Jaén): la elaboración de su aceite de oliva y los productos ya terminados, listos para llegar a la puerta de casa.",
+    "poster": {
+      "src": "/media/projects/raices-del-sur/poster.jpg",
+      "width": 1440,
+      "height": 2560,
+      "alt": "Dos botellas blancas de aceite de oliva virgen extra de Raíces del Sur"
+    },
+    "video": {
+      "provider": "local",
+      "src": "/media/projects/raices-del-sur/film-1080.mp4",
+      "aspect": "9:16",
+      "note": "Rodado en 4K · Versión optimizada para web a 1080p"
+    },
+    "preview": "/media/projects/raices-del-sur/preview.mp4",
+    "gallery": [
+      {
+        "src": "/media/projects/raices-del-sur/01.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Señal de carretera hacia Alcalá la Real bajo un cielo de nubes"
+      },
+      {
+        "src": "/media/projects/raices-del-sur/hablando.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Un joven con camiseta negra habla a cámara en el campo, bajo un cielo con nubes"
+      },
+      {
+        "src": "/media/projects/raices-del-sur/aceitunas.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Tarros de aceitunas de Raíces del Sur"
+      },
+      {
+        "src": "/media/projects/raices-del-sur/hilo-aceite.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Hilo de aceite de oliva verde cayendo de un caño de acero durante la elaboración"
+      }
+    ],
+    "published": true,
+    "order": 5
+  },
+  {
+    "id": "miguel-rivero",
+    "slug": "miguel-rivero",
+    "title": "Miguel Rivero",
+    "category": "Barbería",
+    "year": 2026,
+    "client": "Miguel Rivero",
+    "logo": {
+      "src": "/media/projects/miguel-rivero/logo.jpg",
+      "width": 320,
+      "height": 320,
+      "alt": "Logo de la barbería Miguel Rivero"
+    },
+    "description": "Una sesión en la barbería de Miguel Rivero, de la máquina a la navaja. Porque aquí no sales con un simple corte: sales con una nueva actitud.",
+    "poster": {
+      "src": "/media/projects/miguel-rivero/poster.jpg",
+      "width": 1440,
+      "height": 2560,
+      "alt": "Un barbero repasa con un cepillo un degradado recién hecho"
+    },
+    "video": {
+      "provider": "local",
+      "src": "/media/projects/miguel-rivero/film-1080.mp4",
+      "aspect": "9:16",
+      "note": "Rodado en 4K · Versión optimizada para web a 1080p"
+    },
+    "preview": "/media/projects/miguel-rivero/preview.mp4",
+    "gallery": [
+      {
+        "src": "/media/projects/miguel-rivero/01.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Cliente sentado en la barbería mientras le colocan una capa de colores"
+      },
+      {
+        "src": "/media/projects/miguel-rivero/02.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Un barbero concentrado mientras trabaja"
+      },
+      {
+        "src": "/media/projects/miguel-rivero/03.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Un barbero riendo durante la sesión"
+      },
+      {
+        "src": "/media/projects/miguel-rivero/04.jpg",
+        "width": 1440,
+        "height": 2560,
+        "alt": "Navaja dorada perfilando la barba en el cuello"
+      }
+    ],
+    "published": true,
+    "order": 6
   }
 ]

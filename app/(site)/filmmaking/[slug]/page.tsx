@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Arrow } from "@/components/Arrow";
 import { VideoPlayer } from "@/components/VideoPlayer";
+import { site } from "@/lib/site";
 import { getPublishedProject, getPublishedProjects } from "@/lib/store";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -43,7 +45,7 @@ export default async function ProjectPage({ params }: Props) {
     <article className="pt-[calc(env(safe-area-inset-top)+7rem)] md:pt-40">
       <header className="gutter">
         <Link href="/filmmaking" className="link-gold inline-flex min-h-11 items-center text-sm text-ash">
-          ← Selected work
+          <Arrow direction="left" className="mr-2" /> Selected work
         </Link>
         <h1 className="display-serif mt-4">{project.title}</h1>
       </header>
@@ -112,13 +114,13 @@ export default async function ProjectPage({ params }: Props) {
         {next ? (
           <Link href={`/filmmaking/${next.slug}`} className="group block">
             <span className="eyebrow">Siguiente proyecto</span>
-            <span className="display-serif mt-3 block transition-colors group-hover:text-gold">{next.title} ↗</span>
+            <span className="display-serif mt-3 block transition-colors group-hover:text-gold">{next.title} <Arrow /></span>
           </Link>
         ) : (
-          <Link href="/contacto" className="group block">
+          <a href={site.whatsapp} target="_blank" rel="noreferrer" className="group block">
             <span className="eyebrow">Contáctame</span>
-            <span className="display-serif mt-3 block transition-colors group-hover:text-gold">¿Hablamos? ↗</span>
-          </Link>
+            <span className="display-serif mt-3 block transition-colors group-hover:text-gold">¿Hablamos? <Arrow /></span>
+          </a>
         )}
       </nav>
     </article>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { Project } from "@/lib/types";
 
-export function ProjectTile({ project }: { project: Project }) {
+export function ProjectTile({ project, sizes }: { project: Project; sizes: string }) {
   const frame = useRef<HTMLAnchorElement>(null);
   const video = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
@@ -108,7 +108,7 @@ export function ProjectTile({ project }: { project: Project }) {
           src={project.poster.src}
           alt={project.poster.alt}
           fill
-          sizes="(min-width: 768px) 25vw, 50vw"
+          sizes={sizes}
           className={`object-contain transition-opacity duration-500 ${started ? "opacity-0" : "opacity-100"}`}
         />
       )}

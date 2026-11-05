@@ -90,6 +90,9 @@ const PHOTOS = [
   ["DSC01341.JPG", "morelove-06"],
   ["DSC01439.JPG", "morelove-07"],
   ["DSC01451.JPG", "morelove-08"],
+  ["DSC01108.JPG", "morelove-09"],
+  ["DSC00975.JPG", "raices-01"],
+  ["DSC00995.JPG", "raices-02"],
 ];
 
 const SKY_RIGHT = 680;
@@ -138,6 +141,10 @@ const PROJECTS = [
   { slug: "habanera", dir: "habanera", video: "IMG_8329.MOV", logo: "IMG_9530.JPG", stills: [[7, "poster"], [0.6, "01"], [1.6, "02"], [9.6, "03"], [10.6, "04"]] },
   { slug: "morelove", dir: "marcaropa", video: "IMG_9402.MOV", logo: "IMG_9528.JPG", stills: [[44, "poster"], [5.5, "01"], [26, "02"], [26.8, "03"], [47.7, "04"]] },
   { slug: "sema-con-s-tattoo", dir: "tatuador", video: "IMG_8303.MOV", logo: "IMG_9529.JPG", stills: [[43.5, "poster"], [22, "01"], [25, "02"], [46, "03"], [50, "04"]] },
+  // Montaje con sonido; sus fotogramas salen del rodaje original (STILLS).
+  { slug: "en-pista", dir: "andrescorrer", video: "IMG_7978.MOV", stills: [] },
+  { slug: "raices-del-sur", dir: "aceite", video: "IMG_7890.MOV", logo: "IMG_8916.JPG", stills: [[38.5, "poster"], [16.5, "01"], [4.16, "hablando"], [40, "aceitunas"], [26.3, "hilo-aceite", "crop=1620:2880:0:960"]] },
+  { slug: "miguel-rivero", dir: "peluqueria", video: "IMG_8129.MOV", logo: "IMG_8133.PNG", stills: [[44, "poster"], [9.8, "01"], [15.5, "02"], [24, "03"], [41, "04"]] },
 ];
 
 // Vídeo de las tarjetas: la pieza entera, sin sonido y ligera, porque se reproducen varias a la vez.
@@ -157,21 +164,12 @@ const only = process.argv[2];
 if (!only || only === "video") {
   heroVideo("hero-mobile.mp4", "portrait", 24, "2600k");
   heroVideo("hero-desktop.mp4", "landscape", 24, "5000k");
-
-  // Versión web de la pieza completa, con sonido, para la página del proyecto
-  // mientras no exista streaming en Mux. Nunca se sirve el máster.
-  const film = out("projects", "en-pista", "film-1080.mp4");
-  ffmpeg(
-    "-i", filmPath, "-vf", "scale=1080:1920,format=yuv420p",
-    "-c:v", "libx264", "-preset", "slow", "-crf", "23", "-maxrate", "6M", "-bufsize", "12M",
-    "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", film,
-  );
-  record(FILM, film, "Pieza completa 1080p (demostración local)");
-  tilePreview(filmPath, FILM, "en-pista");
 }
 
 if (!only || only === "projects") {
-  for (const project of PROJECTS) {
+  // `npm run media projects <slug> [...]` procesa solo esos proyectos.
+  const slugs = process.argv.slice(3);
+  for (const project of PROJECTS.filter((p) => !slugs.length || slugs.includes(p.slug))) {
     const master = join(root, "proyectos", project.dir, project.video);
     const origin = `proyectos/${project.dir}/${project.video}`;
     mkdirSync(out("projects", project.slug), { recursive: true });
@@ -186,18 +184,20 @@ if (!only || only === "projects") {
     tilePreview(master, origin, project.slug);
     console.log(project.slug, (statSync(film).size / 1e6).toFixed(1) + " MB");
 
-    for (const [time, name] of project.stills) {
+    // El tercer valor, si está, recorta el plano (p. ej. para dejar fuera un rótulo).
+    for (const [time, name, crop] of project.stills) {
       const tmp = out("projects", project.slug, `.${name}.png`);
-      ffmpeg("-ss", String(time), "-i", master, "-frames:v", "1", "-vf", "scale=1440:2560", tmp);
+      ffmpeg("-ss", String(time), "-i", master, "-frames:v", "1", "-vf", crop ? `${crop},scale=1440:2560` : "scale=1440:2560", tmp);
       const target = out("projects", project.slug, `${name}.jpg`);
       await sharp(tmp).jpeg({ quality: 82, mozjpeg: true }).toFile(target);
       execFileSync("rm", [tmp]);
       record(origin, target, "Fotograma de la pieza");
     }
 
+    if (!project.logo) continue;
     const logoFile = `proyectos/${project.dir}/${project.logo}`;
     const logo = out("projects", project.slug, "logo.jpg");
-    await sharp(join(root, logoFile)).resize(320, 320).jpeg({ quality: 88, mozjpeg: true }).toFile(logo);
+    await sharp(join(root, logoFile)).resize(320, 320).flatten({ background: "#fff" }).jpeg({ quality: 88, mozjpeg: true }).toFile(logo);
     record(logoFile, logo, "Logo del cliente");
   }
 }

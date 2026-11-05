@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import type { Photo } from "@/lib/types";
+import { Arrow } from "./Arrow";
 import { Reveal } from "./Reveal";
 
-export function Shooting({ photos }: { photos: Photo[] }) {
+export function Shooting({ photos, children }: { photos: Photo[]; children?: ReactNode }) {
   const [active, setActive] = useState<number | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const opener = useRef<HTMLButtonElement | null>(null);
@@ -34,6 +35,8 @@ export function Shooting({ photos }: { photos: Photo[] }) {
         <p className="eyebrow">Fotografía</p>
         <h1 className="display-serif mt-4 !text-[clamp(3.25rem,10vw,9rem)]">SHOOTING.</h1>
       </Reveal>
+
+      {children}
 
       {/* Mosaico: cada foto conserva su proporción y se ve entera */}
       <ul className="mt-10 columns-2 gap-3 md:mt-14 md:columns-3 md:gap-5">
@@ -118,10 +121,10 @@ export function Shooting({ photos }: { photos: Photo[] }) {
 
             <div className="flex h-16 shrink-0 items-center justify-center gap-6">
               <button type="button" onClick={() => step(-1)} aria-label="Fotografía anterior" className="grid size-11 place-items-center text-xl hover:text-gold">
-                ←
+                <Arrow direction="left" />
               </button>
               <button type="button" onClick={() => step(1)} aria-label="Fotografía siguiente" className="grid size-11 place-items-center text-xl hover:text-gold">
-                →
+                <Arrow direction="right" />
               </button>
             </div>
           </div>

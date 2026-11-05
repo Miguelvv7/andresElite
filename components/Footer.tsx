@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { Arrow } from "./Arrow";
 
 const link = "link-gold inline-flex min-h-11 items-center";
 
@@ -23,7 +24,7 @@ export function Footer() {
             <Link href="/legal/privacidad" className={link}>Privacidad</Link>
           </li>
           <li>
-            <a href="#contenido" className={`${link} whitespace-nowrap`}>Volver arriba ↑</a>
+            <a href="#contenido" className={`${link} gap-1 whitespace-nowrap`}>Volver arriba <Arrow direction="up" /></a>
           </li>
         </ul>
       </div>

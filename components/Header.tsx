@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { navLinks, site } from "@/lib/site";
+import { Arrow } from "./Arrow";
 
 export function Header() {
   const pathname = usePathname();
@@ -12,6 +13,8 @@ export function Header() {
   // Sobre mí tiene fondo claro: ahí el logo y el menú blancos necesitan fondo oscuro.
   const solid = scrolled || pathname === "/sobre-mi";
   const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+  // Contáctame abre WhatsApp en otra pestaña.
+  const externalProps = (href: string) => (href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {});
   const [open, setOpen] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
 
@@ -48,6 +51,7 @@ export function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
+                  {...externalProps(link.href)}
                   aria-current={isCurrent(link.href) ? "page" : undefined}
                   className="inline-flex min-h-11 items-center text-[0.95rem] font-medium text-bone transition-colors hover:text-gold aria-[current=page]:text-gold"
                 >
@@ -99,6 +103,7 @@ export function Header() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    {...externalProps(link.href)}
                     onClick={() => setOpen(false)}
                     aria-current={isCurrent(link.href) ? "page" : undefined}
                     className="block py-1 font-serif text-[clamp(3rem,15vw,4.5rem)] leading-[1.05] active:text-gold aria-[current=page]:text-gold"
@@ -111,7 +116,7 @@ export function Header() {
           </nav>
 
           <a href={site.instagram} target="_blank" rel="noreferrer" className="eyebrow inline-flex min-h-11 items-center self-start">
-            Instagram ↗
+            Instagram <Arrow className="ml-1.5" />
           </a>
         </div>
       </dialog>

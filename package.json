@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "tsc --noEmit",
-    "media": "node scripts/process-media.mjs"
+    "media": "node scripts/process-media.mjs",
+    "media:tarifas": "node scripts/tarifas-bn.mjs"
   },
   "dependencies": {
     "@mux/mux-player-react": "^3.14.1",

@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 import { deleteProject, saveProject } from "@/app/admin/actions";
 import type { ImageAsset, Project, VideoAspect } from "@/lib/types";
+import { Arrow } from "@/components/Arrow";
 
 async function uploadImage(file: File): Promise<ImageAsset> {
   const body = new FormData();
@@ -117,7 +118,7 @@ export function ProjectEditor({ initial, muxEnabled }: { initial: Project; muxEn
 
   return (
     <main>
-      <Link href="/admin" className="inline-flex min-h-11 items-center text-sm text-ash hover:text-bone">← Proyectos</Link>
+      <Link href="/admin" className="inline-flex min-h-11 items-center text-sm text-ash hover:text-bone"><Arrow direction="left" className="mr-1.5" /> Proyectos</Link>
       <h1 className="mt-2 font-serif text-5xl">{project.title || "Nuevo proyecto"}</h1>
 
       <div className="mt-10 grid gap-8 md:grid-cols-2">

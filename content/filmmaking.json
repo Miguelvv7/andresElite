@@ -1,0 +1,15 @@
+{
+  "intro": "Vídeos de cine que impactan y hacen que tu marca se vea de otro nivel.",
+  "offers": [
+    {
+      "title": "x 1 vídeo",
+      "price": "50€",
+      "features": ["Me encargo del guión", "Grabación en 4k", "Edición total élite"]
+    },
+    {
+      "title": "Paquete de vídeos",
+      "price": "Hablamos",
+      "features": ["Me encargo del guión", "Grabación en 4k", "Edición total élite"]
+    }
+  ]
+}

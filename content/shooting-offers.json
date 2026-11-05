@@ -1,0 +1,15 @@
+{
+  "intro": "Vídeos de cine que impactan y hacen que tu marca se vea de otro nivel.",
+  "offers": [
+    {
+      "title": "Sesión de fotos",
+      "price": "50€",
+      "features": ["1h de sesión", "Eliges spot", "Fotos calidad elite (4000x5328px)", "Edición de 25 fotos", "Te paso todas las fotos que salgan"]
+    },
+    {
+      "title": "Sesión de fotos personalizada",
+      "price": "Hablamos",
+      "features": ["Eliges spot", "Fotos calidad elite (4000x5328px)"]
+    }
+  ]
+}

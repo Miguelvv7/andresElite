@@ -27,7 +27,7 @@ export default async function HomePage() {
       />
       <Hero />
       <About />
-      <Filmmaking projects={projects} />
+      <Filmmaking projects={projects.slice(0, 4)} columns={4} />
       <ContactBand />
     </>
   );

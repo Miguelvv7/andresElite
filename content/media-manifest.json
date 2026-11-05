@@ -12,16 +12,6 @@
       "use": "Vídeo de portada (landscape)"
     },
     {
-      "original": "IMG_9525.MOV",
-      "output": "public/media/projects/en-pista/film-1080.mp4",
-      "use": "Pieza completa 1080p (demostración local)"
-    },
-    {
-      "original": "IMG_9525.MOV",
-      "output": "public/media/projects/en-pista/preview.mp4",
-      "use": "Vídeo de la tarjeta"
-    },
-    {
       "original": "proyectos/habanera/IMG_8329.MOV",
       "output": "public/media/projects/habanera/film-1080.mp4",
       "use": "Pieza completa 1080p (demostración local)"
@@ -275,6 +265,151 @@
       "original": "IMG_9525.MOV",
       "output": "public/media/projects/en-pista/06-lateral.jpg",
       "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/andrescorrer/IMG_7978.MOV",
+      "output": "public/media/projects/en-pista/film-1080.mp4",
+      "use": "Pieza completa 1080p (demostración local)"
+    },
+    {
+      "original": "proyectos/andrescorrer/IMG_7978.MOV",
+      "output": "public/media/projects/en-pista/preview.mp4",
+      "use": "Vídeo de la tarjeta"
+    },
+    {
+      "original": "proyectos/aceite/IMG_7890.MOV",
+      "output": "public/media/projects/raices-del-sur/film-1080.mp4",
+      "use": "Pieza completa 1080p (demostración local)"
+    },
+    {
+      "original": "proyectos/aceite/IMG_7890.MOV",
+      "output": "public/media/projects/raices-del-sur/preview.mp4",
+      "use": "Vídeo de la tarjeta"
+    },
+    {
+      "original": "proyectos/aceite/IMG_7890.MOV",
+      "output": "public/media/projects/raices-del-sur/poster.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/aceite/IMG_7890.MOV",
+      "output": "public/media/projects/raices-del-sur/01.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/aceite/IMG_7890.MOV",
+      "output": "public/media/projects/raices-del-sur/hablando.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/aceite/IMG_7890.MOV",
+      "output": "public/media/projects/raices-del-sur/aceitunas.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/aceite/IMG_7890.MOV",
+      "output": "public/media/projects/raices-del-sur/hilo-aceite.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/aceite/IMG_8916.JPG",
+      "output": "public/media/projects/raices-del-sur/logo.jpg",
+      "use": "Logo del cliente"
+    },
+    {
+      "original": "proyectos/peluqueria/IMG_8129.MOV",
+      "output": "public/media/projects/miguel-rivero/film-1080.mp4",
+      "use": "Pieza completa 1080p (demostración local)"
+    },
+    {
+      "original": "proyectos/peluqueria/IMG_8129.MOV",
+      "output": "public/media/projects/miguel-rivero/preview.mp4",
+      "use": "Vídeo de la tarjeta"
+    },
+    {
+      "original": "proyectos/peluqueria/IMG_8129.MOV",
+      "output": "public/media/projects/miguel-rivero/poster.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/peluqueria/IMG_8129.MOV",
+      "output": "public/media/projects/miguel-rivero/01.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/peluqueria/IMG_8129.MOV",
+      "output": "public/media/projects/miguel-rivero/02.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/peluqueria/IMG_8129.MOV",
+      "output": "public/media/projects/miguel-rivero/03.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/peluqueria/IMG_8129.MOV",
+      "output": "public/media/projects/miguel-rivero/04.jpg",
+      "use": "Fotograma de la pieza"
+    },
+    {
+      "original": "proyectos/peluqueria/IMG_8133.PNG",
+      "output": "public/media/projects/miguel-rivero/logo.jpg",
+      "use": "Logo del cliente"
+    },
+    {
+      "original": "DSC00975.JPG",
+      "output": "public/media/photos/raices-01.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "DSC01108.JPG",
+      "output": "public/media/photos/morelove-09.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "DSC00995.JPG",
+      "output": "public/media/photos/raices-02.jpg",
+      "use": "Fotografía"
+    },
+    {
+      "original": "fotos:video/tarifa-intro-recorte.png",
+      "output": "public/media/tarifas/intro-portatil.jpg",
+      "use": "Foto de Tarifas: fondo en blanco y negro"
+    },
+    {
+      "original": "public/media/projects/en-pista/03-pista.jpg",
+      "output": "public/media/tarifas/intro-mini.jpg",
+      "use": "Foto de Tarifas: fondo en blanco y negro"
+    },
+    {
+      "original": "fotos:video/IMG_7085.JPG",
+      "output": "public/media/tarifas/impulso.jpg",
+      "use": "Foto de Tarifas: fondo en blanco y negro"
+    },
+    {
+      "original": "public/media/photos/londres-05.jpg",
+      "output": "public/media/tarifas/impulso-mini.jpg",
+      "use": "Foto de Tarifas: fondo en blanco y negro"
+    },
+    {
+      "original": "fotos:video/IMG_7968.JPG",
+      "output": "public/media/tarifas/premium.jpg",
+      "use": "Foto de Tarifas: fondo en blanco y negro"
+    },
+    {
+      "original": "public/media/projects/en-pista/05-frontal.jpg",
+      "output": "public/media/tarifas/premium-mini.jpg",
+      "use": "Foto de Tarifas: fondo en blanco y negro"
+    },
+    {
+      "original": "fotos:video/tarifa-elite-recorte.png",
+      "output": "public/media/tarifas/elite.jpg",
+      "use": "Foto de Tarifas: fondo en blanco y negro"
+    },
+    {
+      "original": "fotos:video/DSC00692.JPG",
+      "output": "public/media/tarifas/a-medida.jpg",
+      "use": "Foto de Tarifas: fondo en blanco y negro"
     }
   ]
 }

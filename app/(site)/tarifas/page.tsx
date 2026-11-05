@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { Arrow } from "@/components/Arrow";
 import { Reveal } from "@/components/Reveal";
+import { site } from "@/lib/site";
 import pricing from "@/content/pricing.json";
 
 export const metadata: Metadata = {
   title: "Tarifas",
-  description: "Tarifas de redes sociales, vídeos y reels para negocios, marcas y creadores.",
+  description: "Tarifas de redes sociales, reels y fotos para negocios, marcas y creadores.",
   alternates: { canonical: "/tarifas" },
 };
 
-type Picture = { src: string; alt: string; position?: string };
+type Picture = { src: string; alt: string; position?: string; brightness?: number };
 
 const panels = [
   { id: "inicio", name: pricing.intro.title },
@@ -37,7 +38,7 @@ function SectionIndex({ current }: { current: string }) {
   );
 }
 
-function Panel({ id, image, thumb, children }: { id: string; image: Picture; thumb: Picture; children: React.ReactNode }) {
+function Panel({ id, image, thumb, children }: { id: string; image: Picture; thumb?: Picture; children: React.ReactNode }) {
   return (
     <section
       id={id}
@@ -52,8 +53,8 @@ function Panel({ id, image, thumb, children }: { id: string; image: Picture; thu
           alt={image.alt}
           fill
           sizes="(min-width: 768px) 68vw, 100vw"
-          style={{ objectPosition: image.position }}
-          className="object-cover brightness-[0.82]"
+          style={{ objectPosition: image.position, filter: `brightness(${image.brightness ?? 0.82})` }}
+          className="object-cover"
         />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-ink/30 md:hidden" />
         <div aria-hidden="true" className="absolute inset-0 hidden bg-gradient-to-r from-ink via-ink/35 to-transparent md:block" />
@@ -66,22 +67,24 @@ function Panel({ id, image, thumb, children }: { id: string; image: Picture; thu
         <Reveal className="lg:ml-32 xl:ml-40">{children}</Reveal>
       </div>
 
-      <div className="absolute right-[max(2.5rem,env(safe-area-inset-right))] bottom-16 hidden w-[11vw] min-w-28 border border-white/25 p-1 lg:block">
-        <Image src={thumb.src} alt={thumb.alt} width={1440} height={2560} sizes="12vw" className="aspect-[4/3] w-full object-cover" />
-      </div>
+      {thumb && (
+        <div className="absolute right-[max(2.5rem,env(safe-area-inset-right))] bottom-16 hidden w-[11vw] min-w-28 border border-white/25 p-1 lg:block">
+          <Image src={thumb.src} alt={thumb.alt} width={1440} height={2560} sizes="12vw" className="aspect-[4/3] w-full object-cover" />
+        </div>
+      )}
     </section>
   );
 }
 
 export default function PricingPage() {
-  const { intro, plans, notes } = pricing;
+  const { intro, plans } = pricing;
   return (
     <>
       <Panel id="inicio" image={intro.image} thumb={intro.thumb}>
         <p className="font-condensed text-[clamp(1.2rem,2.4vw,2rem)] tracking-[0.04em] text-bone">{intro.tagline}</p>
         <h1 className="font-condensed mt-1 text-[clamp(6rem,16vw,14rem)] leading-[0.86] tracking-[0.005em]">{intro.title}</h1>
         <p className="mt-5 max-w-md text-lg leading-snug text-bone/85">{intro.text}</p>
-        <p className="font-condensed mt-7 text-[clamp(1.1rem,1.6vw,1.4rem)] tracking-[0.34em] text-gold">300 € · 600 € · 900 €</p>
+        <p className="font-condensed mt-7 text-[clamp(1.1rem,1.6vw,1.4rem)] tracking-[0.34em] text-gold">{plans.filter((plan) => plan.period).map((plan) => plan.price).join(" · ")}</p>
       </Panel>
 
       {plans.map((plan, index) => (
@@ -92,22 +95,25 @@ export default function PricingPage() {
             <span className="font-condensed text-[clamp(2.75rem,5vw,4.5rem)] leading-none">{plan.price}</span>
             {plan.period && <span className="text-sm text-ash">{plan.period}</span>}
           </p>
-          <p className="mt-5 max-w-md text-lg leading-snug text-bone">{plan.summary}</p>
-          <ul className="mt-5 flex max-w-md flex-col gap-1.5 text-[0.95rem] text-bone/85">
-            {plan.includes.map((item) => (
-              <li key={item} className="flex gap-3">
-                <span aria-hidden="true" className="text-gold">—</span>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <Link
-            href="/contacto"
+          {plan.summary && <p className="mt-5 max-w-md text-lg leading-snug text-bone">{plan.summary}</p>}
+          {plan.includes.length > 0 && (
+            <ul className="mt-5 flex max-w-md flex-col gap-1.5 text-[0.95rem] text-bone/85">
+              {plan.includes.map((item) => (
+                <li key={item} className="flex gap-3">
+                  <span aria-hidden="true" className="text-gold">—</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
+          <a
+            href={site.whatsapp}
+            target="_blank"
+            rel="noreferrer"
             className="font-condensed mt-8 inline-flex min-h-12 items-center border border-gold/70 px-6 text-lg tracking-[0.1em] text-bone transition-colors hover:bg-gold hover:text-ink"
           >
-            LO QUIERO ↗
-          </Link>
-          {index === plans.length - 1 && <p className="mt-8 max-w-md text-xs leading-relaxed text-ash">{notes}</p>}
+            LO QUIERO <Arrow className="ml-2" />
+          </a>
         </Panel>
       ))}
     </>

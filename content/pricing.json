@@ -1,52 +1,49 @@
 {
   "intro": {
     "title": "TARIFAS",
-    "tagline": "Redes sociales · Vídeos · Reels",
+    "tagline": "Redes sociales · Reels · Fotos",
     "text": "Tu marca, en movimiento todos los meses. Elige hasta dónde quieres llegar.",
-    "image": { "src": "/media/projects/en-pista/01-retrato.jpg", "alt": "Retrato de Andrés Ruiz en la pista", "position": "50% 22%" },
-    "thumb": { "src": "/media/projects/en-pista/03-pista.jpg", "alt": "Corredor en la pista de atletismo" }
+    "image": { "src": "/media/tarifas/intro-portatil.jpg", "alt": "Andrés Ruiz de espaldas, con camiseta blanca, trabajando con un portátil en su escritorio", "position": "50% 72%", "brightness": 1.15 },
+    "thumb": { "src": "/media/tarifas/intro-mini.jpg", "alt": "Corredor en la pista de atletismo" }
   },
   "plans": [
     {
-      "id": "esencial",
-      "name": "ESENCIAL",
-      "price": "300 €",
-      "period": "/ mes",
-      "summary": "Para empezar a tener presencia con contenido cuidado.",
-      "includes": ["Gestión de 1 red social", "2 reels al mes", "4 publicaciones al mes", "Media jornada de grabación", "Edición, color y subtítulos"],
-      "image": { "src": "/media/projects/habanera/poster.jpg", "alt": "Un cóctel anaranjado acercado a cámara en Habanera", "position": "50% 58%" },
-      "thumb": { "src": "/media/projects/habanera/03.jpg", "alt": "Camarero con una bandeja en la terraza de Habanera" }
-    },
-    {
       "id": "impulso",
       "name": "IMPULSO",
-      "price": "600 €",
+      "price": "350€",
       "period": "/ mes",
-      "summary": "Para publicar con constancia y empezar a destacar.",
-      "includes": ["Gestión de 2 redes sociales", "4 reels al mes", "8 publicaciones al mes", "Stories semanales", "1 jornada de grabación", "Calendario de contenido"],
-      "image": { "src": "/media/projects/sema-con-s-tattoo/poster.jpg", "alt": "Un águila tatuada en un antebrazo durante la sesión", "position": "50% 50%" },
-      "thumb": { "src": "/media/projects/sema-con-s-tattoo/02.jpg", "alt": "Tableta con un diseño de águila en el estudio" }
+      "summary": "",
+      "includes": ["Gestión de Facebook + Instagram", "2 sesiones presenciales de grabación + fotos al mes", "3 Vídeos/Reels al mes (valorado 150€)", "Edición, color, subtítulos y copy", "8 publicaciones al mes (fotos/carruseles)", "15 historias"],
+      "image": { "src": "/media/tarifas/impulso.jpg", "alt": "Andrés Ruiz con gafas de sol y chaqueta negra bajo el puente de Camden Lock", "position": "60% 42%" },
+      "thumb": { "src": "/media/tarifas/impulso-mini.jpg", "alt": "Andrés Ruiz ajustándose la capucha bajo el letrero de Camden" }
+    },
+    {
+      "id": "premium",
+      "name": "PREMIUM",
+      "price": "600€",
+      "period": "/ mes",
+      "summary": "",
+      "includes": ["Gestión de Facebook + Instagram", "Respuestas a mensajes directos de clientes", "4 sesiones presenciales de grabación + fotos al mes", "7 Vídeos/Reels al mes (valorado 350€)", "Edición, color, subtítulos y copy", "20 publicaciones al mes (fotos/carruseles)", "Historias diarias (30 al mes)", "Estrategias + Informes mensuales"],
+      "image": { "src": "/media/tarifas/premium.jpg", "alt": "Andrés Ruiz con una cámara Sony en un estabilizador, en una pista de atletismo", "position": "50% 30%" },
+      "thumb": { "src": "/media/tarifas/premium-mini.jpg", "alt": "Andrés Ruiz corriendo de frente hacia la cámara" }
     },
     {
       "id": "elite",
       "name": "ELITE",
-      "price": "900 €",
+      "price": "900€",
       "period": "/ mes",
-      "summary": "Para las marcas que quieren verse como una película.",
-      "includes": ["Gestión de 3 redes sociales", "8 reels al mes", "12 publicaciones al mes", "1 vídeo de marca al mes", "2 jornadas de grabación", "Sesión de fotos", "Estrategia e informe mensual"],
-      "image": { "src": "/media/projects/morelove/poster.jpg", "alt": "Un joven de espaldas con una camiseta de MoreLove frente al mar", "position": "50% 55%" },
-      "thumb": { "src": "/media/projects/morelove/02.jpg", "alt": "Silueta frente a una puesta de sol sobre el mar" }
+      "summary": "",
+      "includes": ["Gestión de Facebook + Instagram", "Redes sociales verificadas®", "Respuestas a mensajes directos de clientes", "Atención por mensajes/llamadas en el mismo día", "6 sesiones presenciales de grabación + fotos al mes", "1 sesión de fotos al mes (50 fotos editadas)", "10 Vídeos/Reels al mes (valorado 500€)", "Edición, color, subtítulos y copy", "30 publicaciones al mes (fotos/carruseles)", "Historias diarias (30 al mes)", "Extra de historias (ilimitadas a petición)", "Nos centramos en crecimiento y alcance", "Estrategias + Informes mensuales"],
+      "image": { "src": "/media/tarifas/elite.jpg", "alt": "Andrés Ruiz, de espaldas, graba con una cámara en estabilizador a una chica que camina por la calle", "position": "50% 0%" }
     },
     {
       "id": "a-medida",
       "name": "A MEDIDA",
       "price": "Hablamos",
       "period": "",
-      "summary": "Campañas, vídeos de empresa, eventos o sesiones sueltas.",
-      "includes": ["Proyectos puntuales sin cuota mensual", "Guion, dirección y producción", "Entrega en 4K", "Presupuesto cerrado antes de empezar"],
-      "image": { "src": "/media/photos/morelove-07.jpg", "alt": "Un chico con camiseta negra de MoreLove sobre fondo oscuro", "position": "50% 45%" },
-      "thumb": { "src": "/media/photos/morelove-03.jpg", "alt": "Camiseta blanca de MoreLove colgada de una rama" }
+      "summary": "",
+      "includes": [],
+      "image": { "src": "/media/tarifas/a-medida.jpg", "alt": "Andrés Ruiz de frente, con los brazos cruzados y camiseta negra, en una nave con puertas rojas", "position": "50% 32%", "brightness": 1.25 }
     }
-  ],
-  "notes": "Precios orientativos, sin IVA. Desplazamientos fuera de Sevilla aparte."
+  ]
 }
